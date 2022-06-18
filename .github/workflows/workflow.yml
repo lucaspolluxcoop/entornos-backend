@@ -1,0 +1,17 @@
+#name: CD Pipeline
+#on:
+#  push:
+#    branches: [ main ]
+#
+#jobs:
+#  continuous-deployment:
+#    runs-on: ubuntu-latest
+#    if: github.ref == 'refs/heads/main'
+#    steps:
+#      - name: Run a command remotely
+#        uses: docker://evaneos/ssh-action:0.1.0
+#        with:
+#          hosts: 18.229.19.191
+#          user: ubuntu
+#          private_key: ${{ secrets.PRIVATE_SSH_KEY }}
+#          commands: eval $(ssh-agent); ssh-add /home/ubuntu/.ssh/backend; cd /var/www/tunota-backend; git pull; rm -rf vendor; composer install; php artisan migrate
