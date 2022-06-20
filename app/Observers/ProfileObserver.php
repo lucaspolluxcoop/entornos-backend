@@ -4,8 +4,8 @@ namespace App\Observers;
 
 use App\Models\Role;
 use App\Models\Profile;
-use App\Mail\CollegeUserCreated;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Password;
 
 class ProfileObserver
 {
@@ -17,11 +17,14 @@ class ProfileObserver
      */
     public function created(Profile $profile)
     {
-        if($this->isCollege($profile)) {
-            Mail::to($profile->user->email)->send(new CollegeUserCreated($profile));
+        try {
+            $token = Password::createToken($profile->user);
+            $profile->user->sendPasswordResetNotification($token);
+            $profile->user->setIdentifier();
         }
-
-        $profile->user->setIdentifier();
+        catch(Exception $error) {
+            return $error;
+        }
     }
 
     /**
@@ -33,10 +36,5 @@ class ProfileObserver
     public function updated(Profile $profile)
     {
         $profile->user->setIdentifier();
-    }
-
-    private function isCollege($profile)
-    {
-        return $profile->user->role->id == Role::where('name',Role::COLEGIO)->first()->id;
     }
 }

@@ -15,18 +15,13 @@ trait CreateUserTrait
 {
     protected function createUser($userData)
     {
-        if($this->isCollege($userData) || $this->isRealStateBroker($userData) || $this->isTenant($userData)) {
-            $userStateId = UserState::CREADO;
-        } else {
-            $userStateId = UserState::VERIFICADO;
-        }
+        $userStateId = UserState::VERIFICADO;
 
         $user = User::create([
             'email'             => $userData['email'],
             'role_id'           => $userData['role_id'],
             'password'          => isset($userData['password']) ? Hash::make($userData['password']) : Hash::make(Str::random(8)),
             'college_id'        => $userData['college_id'] ?? null,
-            'college_file_path' => $userData['file_path'] ?? null,
             'user_state_id'     => $userStateId
         ]);
 
@@ -34,10 +29,6 @@ trait CreateUserTrait
 
         if($user->role->name == Role::CORREDOR) {
             $user->profile->plate()->create($userData['profile']['plate']);
-        }
-
-        if(!isset($userData['password'])) {
-            Mail::to($user->email)->send(new NewUserCreated($user));
         }
 
         return $user;

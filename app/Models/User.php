@@ -11,6 +11,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Auth\Passwords\CanResetPassword;
+use App\Notifications\MailResetPasswordNotification;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use AjCastro\EagerLoadPivotRelations\EagerLoadPivotTrait;
@@ -166,15 +167,14 @@ class User extends Authenticatable
         return null;
     }
 
-    public static function getUsersByCuit($cuit)
+    /**
+     * Send the password reset notification.
+     *
+     * @param  string  $token
+     * @return void
+     */
+    public function sendPasswordResetNotification($token)
     {
-        $realStateBrokerId = Role::where('name', Role::CORREDOR)->first()->id;
-        $collegeId = Role::where('name', Role::COLEGIO)->first()->id;
-        return User::with(['profile.city.state','role'])
-            ->where('role_id', '<>', $realStateBrokerId)
-            ->where('role_id', '<>', $collegeId)
-            ->whereHas('profile', function($query) use($cuit) {
-                $query->where('cuit', $cuit);
-            })->get();
+        $this->notify(new MailResetPasswordNotification($token));
     }
 }

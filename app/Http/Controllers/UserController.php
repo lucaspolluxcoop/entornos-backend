@@ -47,10 +47,6 @@ class UserController extends Controller
 
         $userData = $request->validated();
 
-        if($userData['role_id'] == Role::where('name',Role::COLEGIO)->first()->id) {
-            $userData['file_path'] = !is_null($userData['registration_file']) ? $request->file('registration_file')->store('', 'users') : null;
-        }
-
         try {
             $user = $this->createUser($userData);
 

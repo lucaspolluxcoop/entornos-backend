@@ -32,6 +32,6 @@ class NewUserCreated extends Mailable
     public function build()
     {
         return $this->markdown('emails.users.created');
-        return $this->subject('Tunota: Creación de Usuario')->markdown('emails.users.created');
+        return $this->subject('Administración: Creación de Usuario')->markdown('emails.users.created');
     }
 }

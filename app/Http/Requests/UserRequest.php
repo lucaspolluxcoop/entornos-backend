@@ -74,8 +74,6 @@ class UserRequest extends FormRequest
                 'profile.last_name'     => 'nullable|string',
                 'profile.district'      => 'required|string',
                 'profile.denomination'  => 'required|string',
-                'registration_file'     => "{$required}|file|mimes:pdf",
-                'password'              => "{$required}|string|min:8"
             ],
             $realStateBroker => [
                 'college_id'                    => 'required|exists:users,id',
