@@ -13,14 +13,18 @@ class MailResetPasswordNotification extends Notification
 
     protected $token;
 
+    protected $profile;
+
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($token)
+    public function __construct($token, $profile)
     {
         $this->token = $token;
+
+        $this->profile = $profile;
     }
 
     /**
@@ -43,13 +47,14 @@ class MailResetPasswordNotification extends Notification
     public function toMail($notifiable)
     {
         $link = config('app.frontend_url') . "/reset-password?token={$this->token}";
+        $fullName = $this->profile->first_name . ' ' . $this->profile->last_name;
 
         return ( new MailMessage )
-            ->greeting('Hola!')
+            ->greeting("Hola! $fullName")
             ->subject( 'Nuevo Usuario Creado' )
             ->line( "Felicidades, su usuario ha sido creado con éxito y ya puede comenzar a usar la aplicación. Por favor ingrese en el siguiente link para completar su cuenta." )
             ->action( 'Completar Registro', $link )
-            ->line( 'Saludos!' );
+            ->salutation('Saludos!');
     }
 
     /**
