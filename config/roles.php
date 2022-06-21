@@ -183,55 +183,5 @@ return [
                 'users'
             ],
         ],
-    ],
-    'third_parties' => [
-        'label' => 'Terceros Interesados',
-        'permissions' => [
-            'index' => [
-                'users',
-                'user-colleges',
-                'contracts',
-                'notification-types',
-                'notification-responses',
-            ],
-            'show' => [
-                'users',
-                'users-grouped-user',
-            ],
-            'store' => [
-                'users'
-            ],
-            'update' => [
-                'users'
-            ],
-            'destroy' => [
-                'users'
-            ],
-        ],
-    ],
-    'private_locator' => [
-        'label' => 'Locador Particular',
-        'permissions' => [
-            'index' => [
-                'users',
-                'user-colleges',
-                'contracts',
-                'notification-types',
-                'notification-responses',
-            ],
-            'show' => [
-                'users',
-                'users-grouped-user',
-            ],
-            'store' => [
-                'users'
-            ],
-            'update' => [
-                'users'
-            ],
-            'destroy' => [
-                'users'
-            ],
-        ],
-    ],
+    ]
 ];
