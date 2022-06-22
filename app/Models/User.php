@@ -87,7 +87,7 @@ class User extends Authenticatable
 
     public function setIdentifier()
     {
-        if($this->role->name == Role::COLEGIO || $this->role->name == Role::LOCADOR) {
+        if($this->role->name == Role::COLEGIO) {
             $this->identifier_code = $this->profile->city->state->code . sprintf("%04d", $this->id);
 
             $this->save();

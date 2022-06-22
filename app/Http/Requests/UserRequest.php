@@ -30,10 +30,8 @@ class UserRequest extends FormRequest
         $required = $this->user ? 'nullable' : 'required';
         $college = Role::COLEGIO;
         $realStateBroker = Role::CORREDOR;
-        $privateLocator = Role::LOCADOR_PARTICULAR;
         $tenant = Role::LOCATARIO;
         $warrant = Role::GARANTE;
-        $thirdParties = Role::TERCEROS;
         $locator = Role::LOCADOR;
 
         $baseRules = [
@@ -92,14 +90,7 @@ class UserRequest extends FormRequest
                 'profile.other_economic_activity_type_name' => 'nullable|required_if:profile.economic_activity_type_id,4|string',
                 'profile.nationality'                       => 'required|string'
             ],
-            $privateLocator => [],
             $locator => [],
-            $thirdParties => [
-                'registration_file'                         => "{$required}|file|mimes:pdf",
-                'profile.business_name'                     => 'required|string',
-                'profile.economic_activity_type_id'         => 'required|numeric|exists:economic_activity_types,id',
-                'profile.other_economic_activity_type_name' => 'nullable|required_if:profile.economic_activity_type_id,4|string',
-            ],
         ];
 
         if(is_null($roleName)) {
