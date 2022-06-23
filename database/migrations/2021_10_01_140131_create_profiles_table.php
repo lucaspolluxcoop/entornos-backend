@@ -17,7 +17,7 @@ class CreateProfilesTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('district');
-            $table->string('zip');
+            $table->string('zip')->nullable();
             $table->string('phone');
             $table->string('website')->nullable();
             $table->foreignId('city_id')->nullable()->constrained();

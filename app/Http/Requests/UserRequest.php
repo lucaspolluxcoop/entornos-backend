@@ -83,12 +83,20 @@ class UserRequest extends FormRequest
             $tenant => [
                 'profile.economic_activity_type_id'         => 'required|numeric|exists:economic_activity_types,id',
                 'profile.other_economic_activity_type_name' => 'nullable|required_if:profile.economic_activity_type_id,4|string',
-                'profile.nationality'                       => 'required|string'
+                'profile.nationality'                       => 'required|string',
+                'profile.city_id'                           => 'nullable|string',
+                'profile.zip'                               => 'nullable|string',
+                'profile.street'                            => 'nullable|string',
+                'profile.number'                            => 'nullable|string'
             ],
             $warrant => [
                 'profile.economic_activity_type_id'         => 'required|numeric|exists:economic_activity_types,id',
                 'profile.other_economic_activity_type_name' => 'nullable|required_if:profile.economic_activity_type_id,4|string',
-                'profile.nationality'                       => 'required|string'
+                'profile.nationality'                       => 'required|string',
+                'profile.city_id'                           => 'nullable|string',
+                'profile.zip'                               => 'nullable|string',
+                'profile.street'                            => 'nullable|string',
+                'profile.number'                            => 'nullable|string'
             ],
             $locator => [],
         ];
