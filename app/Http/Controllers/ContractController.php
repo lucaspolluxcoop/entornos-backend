@@ -70,7 +70,7 @@ class ContractController extends Controller
 
         $contract = Contract::create($contractData);
 
-        $contract->warranties()->sync($contractData['warrants']);
+        $contract->warranties()->sync($contractData['warranties']);
 
         $contract->generateId();
 

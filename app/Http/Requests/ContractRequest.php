@@ -27,7 +27,7 @@ class ContractRequest extends FormRequest
             'start_contract'                => 'required|date',
             'end_contract'                  => 'required|date',
             'contract_locative_canon_id'    => 'nullable|numeric|exists:contract_locative_canons,id',
-            'warrants'                      => 'required|array',
+            'warranties'                    => 'required|array',
             'property_id'                   => 'required|exists:properties,id',
             'contract_type_id'              => 'required|exists:contract_types,id',
             'owner_id'                      => 'required|exists:users,id',

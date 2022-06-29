@@ -17,9 +17,6 @@ class WarrantyResource extends JsonResource
     {
         return [
             'id'            => $this->id,
-            'title'         => $this->title,
-            'description'   => $this->description,
-            'filePath'      => $this->file_path,
             'user'          => UserResource::make($this->whenLoaded('user')),
             'warrantyType'  => WarrantyTypeResource::make($this->whenLoaded('warrantyType'))
         ];

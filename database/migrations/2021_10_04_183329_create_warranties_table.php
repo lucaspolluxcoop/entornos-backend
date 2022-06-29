@@ -15,9 +15,6 @@ class CreateWarrantiesTable extends Migration
     {
         Schema::create('warranties', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->string('description')->nullable();
-            $table->string('file_path');
             $table->foreignId('warranty_type_id')->constrained();
             $table->timestamps();
         });

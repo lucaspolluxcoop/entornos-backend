@@ -24,11 +24,8 @@ class WarrantyRequest extends FormRequest
     public function rules()
     {
         return [
-            'title'             => 'required|string',
-            'description'       => 'nullable|string',
             'warranty_type_id'  => 'required|numeric|exists:warranty_types,id',
-            'user_id'           => 'exclude_unless:warranty_type_id,5|required|exists:users,id',
-            'document'          => 'sometimes|file|mimes:pdf'
+            'user_id'           => 'required|exists:users,id'
         ];
     }
 }

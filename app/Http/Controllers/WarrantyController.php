@@ -34,10 +34,6 @@ class WarrantyController extends Controller
 
         $warranty = $request->validated();
 
-        if($request->hasFile('document')) {
-            $warranty['file_path'] = $request->file('document')->store('', 'warranties');
-        }
-
         $warranty = Warranty::create($warranty);
 
         return new WarrantyResource($warranty->load(['warrantyType','user.profile']));

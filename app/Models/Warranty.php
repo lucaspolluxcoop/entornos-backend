@@ -3,19 +3,16 @@
 namespace App\Models;
 
 use App\Models\User;
-use App\Models\Contract;
 use App\Models\WarrantyType;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Database\Eloquent\Relations\Pivot;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Warranty extends Pivot
+class Warranty extends Model
 {
     use HasFactory,SoftDeletes;
 
     protected $fillable = [
-        'contract_id',
         'warranty_type_id',
         'user_id'
     ];
@@ -25,11 +22,6 @@ class Warranty extends Pivot
     public function user()
     {
         return $this->belongsTo(User::class);
-    }
-
-    public function contract()
-    {
-        return $this->belongsTo(Contract::class);
     }
 
     public function warrantyType()
