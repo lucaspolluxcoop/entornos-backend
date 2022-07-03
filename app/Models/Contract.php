@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Property;
+use App\Models\Warranty;
 use App\Models\ContractType;
 use App\Models\Notification;
 use App\Models\ExtintionReason;
@@ -62,9 +63,7 @@ class Contract extends Model
 
     public function warranties()
     {
-        return $this->belongsToMany(User::class, 'warranties')
-            ->withPivot('warranty_type_id')
-            ->using(Warranty::class);
+        return $this->belongsToMany(Warranty::class,'contract_warranties');
     }
 
     public function contractLocativeCanon()

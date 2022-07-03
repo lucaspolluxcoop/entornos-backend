@@ -17,7 +17,7 @@ class ContractQuery extends QueryBuilder
     public function __construct()
     {
         /* Load base relationships, contrains or joins */
-        $contractsQuery = Contract::query()->with(['contractType', 'property', 'owner.profile', 'tenant.profile', 'locator.profile', 'warranties', 'warranties.pivot.warrantyType']);
+        $contractsQuery = Contract::query()->with(['contractType', 'property', 'owner.profile', 'tenant.profile', 'locator.profile']);
 
         parent::__construct($contractsQuery);
 

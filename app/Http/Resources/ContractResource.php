@@ -39,7 +39,7 @@ class ContractResource extends JsonResource
             'tenant'                => UserResource::make($this->whenLoaded('tenant')),
             'locator'               => UserResource::make($this->whenLoaded('locator')),
             'property'              => PropertyResource::make($this->whenLoaded('property')),
-            'warrants'              => UserResource::collection($this->whenLoaded('warranties')),
+            'warranties'            => WarrantyResource::collection($this->whenLoaded('warranties')),
             'notifications'         => NotificationResource::collection($this->whenLoaded('notifications')),
         ];
     }
