@@ -24,8 +24,7 @@ class ContractNotificationResource extends JsonResource
             'responseDate'                  => $this->response_date,
             'contract'                      => ContractResource::make($this->whenLoaded('contract')),
             'reason'                        => ContractNotificationCategoryResource::make($this->whenLoaded('reason')),
-            'firstPart'                     => UserResource::make($this->whenLoaded('firstPart')),
-            'secondPart'                    => UserResource::make($this->whenLoaded('secondPart')),
+            'user'                          => UserResource::make($this->whenLoaded('user')),
             'contractNotificationCategory'  => ContractNotificationCategoryResource::make($this->whenLoaded('contractNotificationCategory')),
             'contractNotificationResponse'  => ContractNotificationResponseResource::make($this->whenLoaded('contractNotificationResponse')),
         ];

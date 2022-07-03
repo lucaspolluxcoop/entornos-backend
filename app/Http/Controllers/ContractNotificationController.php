@@ -35,8 +35,7 @@ class ContractNotificationController extends Controller
             'contract',
             'reason',
             'contractNotificationCategory',
-            'firstPart.profile',
-            'secondPart.profile',
+            'user.profile',
             'contractNotificationResponse'
         ]));
     }

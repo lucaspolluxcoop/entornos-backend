@@ -29,8 +29,7 @@ class ContractNotificationRequest extends FormRequest
             'notification_date'                 => 'required|date',
             'response_date'                      => 'exclude_if:contract_notification_response_id,null|required|date',
             'contract_notification_response_id' => 'nullable||numeric|exists:contract_notification_responses,id',
-            'first_part_id'                     => 'required|numeric|exists:users,id',
-            'second_part_id'                    => 'required|numeric|exists:users,id',
+            'user_id'                           => 'required|numeric|exists:users,id',
             'reason_id'                         => 'required||numeric|exists:contract_notification_categories,id'
         ];
     }

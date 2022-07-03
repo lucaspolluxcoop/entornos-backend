@@ -18,11 +18,8 @@ class AddFieldsToContractNotificationsTable extends Migration
             $table->dropColumn('reason');
             $table->date('notification_date');
             $table->date('response_date')->nullable();
-            $table->foreignId('first_part_id')
-                ->constrained('users')
-                ->onDelete('cascade');
-            $table->foreignId('second_part_id')
-                ->constrained('users')
+            $table->foreignId('user_id')
+                ->constrained()
                 ->onDelete('cascade');
             $table->foreignId('reason_id')
                 ->constrained('contract_notification_categories')
@@ -45,10 +42,12 @@ class AddFieldsToContractNotificationsTable extends Migration
             $table->integer('outcome');
             $table->dropColumn('notification_date');
             $table->dropColumn('response_date');
-            $table->dropForeign('contract_notifications_first_part_id_foreign');
-            $table->dropForeign('contract_notifications_second_part_id_foreign');
+            $table->dropForeign('contract_notifications_user_id_foreign');
+            $table->dropColumn('user_id');
             $table->dropForeign('contract_notifications_contract_notification_response_id_foreign');
+            $table->dropColumn('notification_response_id');
             $table->dropForeign('contract_notifications_reason_id_foreign');
+            $table->dropColumn('reason_id');
         });
     }
 }

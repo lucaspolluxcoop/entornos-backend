@@ -15,7 +15,7 @@ class ContractNotificationQuery extends QueryBuilder
     {
         /* Load base relationships, contrains or joins */
         $contractNotificationsQuery = ContractNotification::query()
-            ->with(['contractNotificationCategory', 'contract', 'contractNotificationResponse', 'reason', 'firstPart.profile', 'secondPart.profile'])
+            ->with(['contractNotificationCategory', 'contract', 'contractNotificationResponse', 'reason', 'user.profile'])
             ->where('contract_id', $contract->id);
 
         parent::__construct($contractNotificationsQuery);

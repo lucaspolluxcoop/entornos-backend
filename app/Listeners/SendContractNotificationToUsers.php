@@ -28,7 +28,6 @@ class SendContractNotificationToUsers
      */
     public function handle(ContractNotificationsCreated $event)
     {
-        Mail::to($event->contractNotification->firstPart->email)->send(new ContractNotificationCreated($event->contractNotification, $event->contractNotification->firstPart));
-        Mail::to($event->contractNotification->secondPart->email)->send(new ContractNotificationCreated($event->contractNotification, $event->contractNotification->secondPart));
+        Mail::to($event->contractNotification->user->email)->send(new ContractNotificationCreated($event->contractNotification, $event->contractNotification->user));
     }
 }

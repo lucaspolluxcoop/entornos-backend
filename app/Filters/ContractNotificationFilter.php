@@ -20,12 +20,7 @@ class ContractNotificationFilter implements Filter
             ->orWhereHas('contractNotificationResponse', function ($query) use ($value) {
                 $query->where('title', 'like', "%{$value}%");
             })
-            ->orWhereHas('firstPart', function ($query) use ($value) {
-                $query->whereHas('profile', function($query) use ($value) {
-                    $query->where('name', 'like', "%{$value}%");
-                });
-            })
-            ->orWhereHas('secondPart', function ($query) use ($value) {
+            ->orWhereHas('user', function ($query) use ($value) {
                 $query->whereHas('profile', function($query) use ($value) {
                     $query->where('name', 'like', "%{$value}%");
                 });

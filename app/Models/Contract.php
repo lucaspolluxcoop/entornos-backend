@@ -5,8 +5,8 @@ namespace App\Models;
 use App\Models\Property;
 use App\Models\Warranty;
 use App\Models\ContractType;
-use App\Models\Notification;
 use App\Models\ExtintionReason;
+use App\Models\ContractNotification;
 use App\Models\ContractLocativeCanon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -71,9 +71,9 @@ class Contract extends Model
         return $this->belongsTo(ContractLocativeCanon::class);
     }
 
-    public function notifications()
+    public function contractNotifications()
     {
-        return $this->hasMany(Notification::class);
+        return $this->hasMany(ContractNotification::class);
     }
 
     public function extintionReason()
@@ -93,15 +93,22 @@ class Contract extends Model
 
         $users = collect();
 
-        $users->add($this->tenant->load('profile'));
+        $users->add($this->tenant->load(['profile','role']));
 
-        $users->add($this->locator->load('profile'));
+        $users->add($this->locator->load(['profile','role']));
 
         foreach($this->warranties as $warranty) {
 
-            if(!is_null($warranty->user)) {
+            $repeated = false;
 
-                $users->add($warranty->user->load('profile'));
+            foreach( $users as $user) {
+                if ($user->id == $warranty->user->id) {
+                    $repeated = true;
+                }
+            }
+
+            if (!$repeated) {
+                $users->add($warranty->user->load(['profile','role']));
             }
         }
         return $users;

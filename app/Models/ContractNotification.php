@@ -32,14 +32,9 @@ class ContractNotification extends Model
         return $this->belongsTo(ContractNotificationCategory::class, 'reason_id');
     }
 
-    public function firstPart()
+    public function user()
     {
-        return $this->belongsTo(User::class, 'first_part_id')->withTrashed();
-    }
-
-    public function secondPart()
-    {
-        return $this->belongsTo(User::class, 'second_part_id')->withTrashed();
+        return $this->belongsTo(User::class, 'user_id')->withTrashed();
     }
 
     public function contract()
