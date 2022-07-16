@@ -27,7 +27,6 @@ class ContractExtintionRequest extends FormRequest
             'extintion_date'        => 'required|date',
             'extintion_reason_id'   => 'required|exists:extintion_reasons,id',
             'other_reason'          => 'nullable|required_if:extintion_reason_id,9|string',
-            'contract_state'        => 'required|string'
         ];
     }
 }

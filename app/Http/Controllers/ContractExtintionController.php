@@ -18,8 +18,6 @@ class ContractExtintionController extends Controller
 
         $contract->update($contractExtintionData);
 
-        $contract->setContractFinalState($contractExtintionData['contract_state']);
-
         return new ContractResource($contract->load([
             'owner.profile.city.state',
             'tenant.profile.city.state',
@@ -34,14 +32,13 @@ class ContractExtintionController extends Controller
             'property.propertyZone',
             'property.propertyPublicServices',
             'contractType',
-            'warranties.pivot.warrantyType',
-            'warranties.profile.city.state',
-            'warranties.profile.economicActivityType',
+            'warranties.warrantyType',
+            'warranties.user.profile',
             'contractLocativeCanon',
-            'notifications.notificationManagement.notificationType',
-            'notifications.notificationReason.role',
-            'notifications.user.profile',
-            'notifications.notificationResponse',
+            'contractNotifications.contractNotificationCategory',
+            'contractNotifications.reason',
+            'contractNotifications.user.profile',
+            'contractNotifications.contractNotificationResponse',
             'extintionReason',
         ]));
     }
