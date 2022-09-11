@@ -3,6 +3,7 @@
 namespace App\Queries;
 
 use App\Models\User;
+use App\Filters\RoleFilter;
 use App\Filters\UserFilter;
 use App\Sorts\RoleLabelSort;
 use App\Sorts\ProfileNameSort;
@@ -32,9 +33,8 @@ class UserQuery extends QueryBuilder
             ])
             ->allowedFilters([
                 AllowedFilter::custom('search', new UserFilter),
-                AllowedFilter::exact('college', 'users.college_id'),
                 AllowedFilter::custom('userState', new UserStateFilter),
-                AllowedFilter::exact('role', 'users.role_id'),
+                AllowedFilter::custom('role', new RoleFilter),
             ]);
     }
 }

@@ -17,10 +17,8 @@ class Role extends Model
     public const ADMIN = 'administrator';
     public const COLEGIO = 'college_real_state_brokers';
     public const CORREDOR = 'real_state_broker';
-    public const LOCADOR_PARTICULAR = 'private_locator';
     public const LOCATARIO = 'tenant';
     public const GARANTE = 'warrant';
-    public const TERCEROS = 'third_parties';
     public const LOCADOR = 'locator';
 
     public function users()

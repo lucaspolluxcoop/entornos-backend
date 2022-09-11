@@ -6,6 +6,7 @@ use App\Models\Contract;
 use App\Sorts\OwnerNameSort;
 use App\Filters\ContractFilter;
 use App\Filters\ContractPartFilter;
+use App\Filters\ContractOwnerFilter;
 use App\Sorts\ContractTypeTitleSort;
 use Spatie\QueryBuilder\AllowedSort;
 use App\Sorts\PropertyIdentifierSort;
@@ -36,7 +37,8 @@ class ContractQuery extends QueryBuilder
             ->allowedFilters([
                 AllowedFilter::exact('contractType', 'contracts.contract_type_id'),
                 AllowedFilter::custom('search', new ContractFilter),
-                AllowedFilter::custom('part', new ContractPartFilter)
+                AllowedFilter::custom('part', new ContractPartFilter),
+                AllowedFilter::custom('owner', new ContractOwnerFilter)
             ]);
     }
 }

@@ -4,9 +4,11 @@ namespace App\Models;
 
 use App\Models\Role;
 use App\Models\Profile;
+use App\Models\Contract;
 use App\Models\UserState;
 use Illuminate\Support\Facades\DB;
 use Laravel\Passport\HasApiTokens;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -176,5 +178,19 @@ class User extends Authenticatable
     public function sendPasswordResetNotification($token)
     {
         $this->notify(new MailResetPasswordNotification($token, $this->profile));
+    }
+
+    public function getOwnUsers()
+    {
+        if($this->role->name == Role::CORREDOR) {
+            $contracts = Contract::where('owner_id', Auth::id())->get();
+            $ownUsers = [];
+            foreach($contracts as $contract) {
+                $ownUsers.add($contract->tenant_id);
+                $ownUsers.add($contract->locator_id);
+            }
+            return array_unique($ownUsers);
+        }
+        return [];
     }
 }
