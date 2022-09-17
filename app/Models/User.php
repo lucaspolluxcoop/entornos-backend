@@ -186,10 +186,40 @@ class User extends Authenticatable
             $contracts = Contract::where('owner_id', Auth::id())->get();
             $ownUsers = [];
             foreach($contracts as $contract) {
-                $ownUsers.add($contract->tenant_id);
-                $ownUsers.add($contract->locator_id);
+                $ownUsers->add($contract->tenant_id);
+                $ownUsers->add($contract->locator_id);
+                foreach($contract->warranties() as $warranty) {
+                    $ownUser->add($warranty->user->id);
+                }
             }
             return array_unique($ownUsers);
+        }
+        return [];
+    }
+
+    public function getOwnProperties()
+    {
+        if($this->role->name == Role::CORREDOR) {
+            $contracts = Contract::where('owner_id', Auth::id())->get()->toArray();
+            $ownProperties = array_map( function($contract) {
+                return $contract['property_id'];
+            }, $contracts);
+            return array_unique($ownProperties);
+        }
+        return [];
+    }
+
+    public function getOwnWarranties()
+    {
+        if($this->role->name == Role::CORREDOR) {
+            $contracts = Contract::where('owner_id', Auth::id())->get()->toArray();
+            $ownWarranties = array_map( function($contract) {
+                return array_map( function($warranty) {
+                    return $warranty['id'];
+                }, $contract['warranties']->toArray());
+            }, $contracts);
+
+            return array_unique($ownWarranties);
         }
         return [];
     }

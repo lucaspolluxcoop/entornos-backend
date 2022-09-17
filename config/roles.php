@@ -93,6 +93,7 @@ return [
                 'contract-locative-canons',
                 'users',
                 'contracts',
+                'warranties',
                 'warranty-types',
                 'property-maintenance-states',
                 'extintion-reasons',

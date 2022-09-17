@@ -19,9 +19,11 @@ class RoleFilter implements Filter
             $ownUsers = Auth::user()->getOwnUsers();
 
             $query->whereHas('role', function($query) use($ownUsers){
-                $query->where('name', Role::LOCADOR)
-                    ->orWhere('name', Role::LOCATARIO)
-                    ->orWhere('name', Role::GARANTE)
+                $query->where( function($query) use($ownUsers) {
+                    $query->where('name', Role::LOCADOR)
+                        ->orWhere('name', Role::LOCATARIO)
+                        ->orWhere('name', Role::GARANTE);
+                    })
                     ->whereIn('users.id',$ownUsers);
                 });
         }

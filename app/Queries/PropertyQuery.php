@@ -5,6 +5,7 @@ namespace App\Queries;
 use App\Models\Property;
 use App\Filters\PropertyFilter;
 use App\Sorts\PropertyTypeSort;
+use App\Filters\PropertyUserFilter;
 use Spatie\QueryBuilder\AllowedSort;
 use Spatie\QueryBuilder\QueryBuilder;
 use Spatie\QueryBuilder\AllowedFilter;
@@ -29,7 +30,8 @@ class PropertyQuery extends QueryBuilder
 			])
             ->allowedFilters([
                 AllowedFilter::exact('propertyType', 'properties.property_type_id'),
-                AllowedFilter::custom('search', new PropertyFilter)
+                AllowedFilter::custom('search', new PropertyFilter),
+                AllowedFilter::custom('user', new PropertyUserFilter)
             ]);
     }
 }

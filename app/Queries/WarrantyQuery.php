@@ -4,6 +4,7 @@ namespace App\Queries;
 
 use App\Models\Warranty;
 use App\Filters\WarrantyFilter;
+use App\Filters\WarrantyUserFilter;
 use App\Sorts\WarrantyTypeTitleSort;
 use Spatie\QueryBuilder\AllowedSort;
 use Spatie\QueryBuilder\QueryBuilder;
@@ -28,7 +29,8 @@ class WarrantyQuery extends QueryBuilder
             ])
             ->allowedFilters([
                 AllowedFilter::exact('warrantyType', 'warranties.warranty_type_id'),
-                AllowedFilter::custom('search', new WarrantyFilter)
+                AllowedFilter::custom('search', new WarrantyFilter),
+                AllowedFilter::custom('user', new WarrantyUserFilter)
             ]);
     }
 }
