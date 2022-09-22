@@ -98,6 +98,7 @@ return [
                 'property-maintenance-states',
                 'extintion-reasons',
                 'properties',
+                'contract-parts',
             ],
             'show' => [
                 'users',

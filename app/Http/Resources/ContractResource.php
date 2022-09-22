@@ -9,7 +9,6 @@ use App\Http\Resources\ContractTypeResource;
 use App\Http\Resources\NotificationResource;
 use App\Http\Resources\ExtintionReasonResource;
 use Illuminate\Http\Resources\Json\JsonResource;
-use App\Http\Resources\ContractNotificationResource;
 use App\Http\Resources\ContractLocativeCanonResource;
 
 class ContractResource extends JsonResource
@@ -41,7 +40,7 @@ class ContractResource extends JsonResource
             'locator'               => UserResource::make($this->whenLoaded('locator')),
             'property'              => PropertyResource::make($this->whenLoaded('property')),
             'warranties'            => WarrantyResource::collection($this->whenLoaded('warranties')),
-            'contractNotifications' => ContractNotificationResource::collection($this->whenLoaded('contractNotifications')),
+            'notifications'         => NotificationResource::collection($this->whenLoaded('notifications')),
         ];
     }
 }

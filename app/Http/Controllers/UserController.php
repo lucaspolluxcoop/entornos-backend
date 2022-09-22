@@ -36,7 +36,6 @@ class UserController extends Controller
             'profile.plate.plateState',
             'profile.economicActivityType',
             'profile.city.state',
-            'college.profile',
             'userState'
         ]));
     }
@@ -55,7 +54,6 @@ class UserController extends Controller
                 'profile.plate.plateState',
                 'profile.economicActivityType',
                 'profile.city.state',
-                'college.profile',
                 'userState'
             ]));
 
@@ -88,7 +86,6 @@ class UserController extends Controller
             'profile.plate.plateState',
             'profile.economicActivityType',
             'profile.city.state',
-            'college',
             'userState'
         ]));
     }
@@ -114,7 +111,6 @@ class UserController extends Controller
             'profile.plate.plateState',
             'profile.economicActivityType',
             'profile.city.state',
-            'college',
             'userState'
         ]));
     }

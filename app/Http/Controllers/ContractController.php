@@ -44,10 +44,10 @@ class ContractController extends Controller
             'warranties.warrantyType',
             'warranties.user.profile',
             'contractLocativeCanon',
-            'contractNotifications.contractNotificationCategory',
-            'contractNotifications.reason',
-            'contractNotifications.user.profile',
-            'contractNotifications.contractNotificationResponse',
+            'notifications.notificationManagement',
+            'notifications.notificationReason',
+            'notifications.notificationResponse',
+            'notifications.user.profile',
             'extintionReason',
         ]));
     }

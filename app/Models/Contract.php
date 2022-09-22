@@ -71,9 +71,9 @@ class Contract extends Model
         return $this->belongsTo(ContractLocativeCanon::class);
     }
 
-    public function contractNotifications()
+    public function notifications()
     {
-        return $this->hasMany(ContractNotification::class);
+        return $this->hasMany(Notification::class);
     }
 
     public function extintionReason()
