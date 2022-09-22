@@ -75,12 +75,6 @@ php artisan command:addStatesToCities
 docker-composer up --build
 ```
 
-#### Enter to the app container and follow all the `setup` steps
-
-```bash
-docker exec -it tunota-app bash
-```
-
 <br />
 
 **NOTE:** If you receive this error, when trying to migrate the database,
