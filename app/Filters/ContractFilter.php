@@ -19,8 +19,7 @@ class ContractFilter implements Filter
             })
             ->orWhereHas('tenant', function ($query) use ($value) {
                 $query->whereHas('profile', function($query) use ($value) {
-                    $query->where('first_name', 'like', "%{$value}%")
-                        ->orWhere('last_name', 'like', "%{$value}%");
+                    $query->whereRaw("CONCAT(first_name,' ',last_name) like '%${value}%'");
                 });
             });
     }

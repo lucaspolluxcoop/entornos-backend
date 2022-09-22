@@ -16,7 +16,8 @@ class UserFilter implements Filter
                 $query->where('users.identifier_code', 'like', "%{$value}%")
                     ->orWhere('users.email', 'like', "%{$value}%")
                     ->orWhere('profiles.denomination', 'like', "%{$value}%")
-                    ->orWhere('profiles.cuit', 'like', "%{$value}%");
+                    ->orWhere('profiles.cuit', 'like', "%{$value}%")
+                    ->orWhereRaw("CONCAT(profiles.first_name,' ',profiles.last_name) like '%${value}%'");
                 });
     }
 }
