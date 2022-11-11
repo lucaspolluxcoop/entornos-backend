@@ -21,10 +21,6 @@ class RegisterController extends Controller
     {
         $userData = $request->validated();
 
-        if($this->checkFile($userData)) {
-            $userData['file_path'] = $request->file('registration_file')->store('', 'users');
-        }
-
         try {
             $this->createUser($userData);
 
@@ -59,13 +55,5 @@ class RegisterController extends Controller
 
             return new JsonResponse(null,400);
         }
-    }
-
-    private function checkFile($userData)
-    {
-        return in_array(
-            $userData['role_id'],
-            [Role::where('name',Role::COLEGIO)->first()->id, Role::where('name',Role::TERCEROS)->first()->id]
-        );
     }
 }

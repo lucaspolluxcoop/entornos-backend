@@ -28,7 +28,6 @@ return [
                 'economic-activity-types',
                 'plate-states',
                 'property-maintenance-states',
-                'user-colleges',
                 'warranties',
                 'warranty-types',
             ],
@@ -43,38 +42,6 @@ return [
             ],
             'destroy' => [
                 'users',
-            ],
-        ],
-    ],
-    'college_real_state_brokers' => [
-        'label' => 'Colegio de CI',
-        'permissions' => [
-            'index' => [
-                'property-maintenance-states',
-                'property-public-services',
-                'notification-types',
-                'notification-responses',
-                'property-types',
-                'property-conservations',
-                'property-terminations',
-                'contract-types',
-                'contract-locative-canons',
-                'users',
-                'user-colleges',
-                'contracts',
-            ],
-            'show' => [
-                'users'
-            ],
-            'store' => [
-                'users'
-            ],
-            'update' => [
-                'users',
-                'plates'
-            ],
-            'destroy' => [
-                'users'
             ],
         ],
     ],
@@ -143,7 +110,6 @@ return [
                 'contract-types',
                 'contract-locative-canons',
                 'users',
-                'user-colleges',
                 'contracts',
             ],
             'show' => [
@@ -175,7 +141,6 @@ return [
                 'contract-types',
                 'contract-locative-canons',
                 'users',
-                'user-colleges',
                 'contracts',
             ],
             'show' => [
@@ -207,7 +172,6 @@ return [
                 'contract-types',
                 'contract-locative-canons',
                 'users',
-                'user-colleges',
                 'contracts',
             ],
             'show' => [

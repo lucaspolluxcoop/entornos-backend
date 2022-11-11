@@ -15,7 +15,6 @@ class Role extends Model
 
     public const SUDO = 'sudo';
     public const ADMIN = 'administrator';
-    public const COLEGIO = 'college_real_state_brokers';
     public const CORREDOR = 'real_state_broker';
     public const LOCATARIO = 'tenant';
     public const GARANTE = 'warrant';

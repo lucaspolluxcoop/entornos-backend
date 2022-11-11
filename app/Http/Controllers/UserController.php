@@ -129,15 +129,6 @@ class UserController extends Controller
         return new JsonResponse(null,200);
     }
 
-    public function findByPlate()
-    {
-        $user = User::searchRealStateBroker(request()->get('plate'), request()->get('state'), request()->get('college'));
-
-        if(!is_null($user)) {
-            return new UserResource($user);
-        }
-        return new JsonResponse(null,400);
-    }
 
     public function approve(User $user)
     {
@@ -152,18 +143,6 @@ class UserController extends Controller
 
         if(!is_null($user)) {
             return new UserResource($user);
-        }
-        return new JsonResponse(null,400);
-    }
-
-    public function findGroupedUser()
-    {
-        $this->allowsOrAbort('users-grouped-user.show');
-
-        $user = User::searchGroupedUser(request()->get('cuit'));
-
-        if(!is_null($user)) {
-            return response()->json(['data' => $user],200);
         }
         return new JsonResponse(null,400);
     }

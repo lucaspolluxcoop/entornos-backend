@@ -24,12 +24,9 @@ class UserResource extends JsonResource
             'identifierCode'    => $this->identifier_code,
             'role'              => RoleResource::make($this->whenLoaded('role')),
             'profile'           => ProfileResource::make($this->whenLoaded('profile')),
-            'college'           => UserResource::make($this->whenLoaded('college')),
-            'college_id'        => $this->college_id,
             'userState'         => UserStateResource::make($this->whenLoaded('userState')),
             'createdAt'         => $this->created_at,
             'updatedAt'         => $this->lastAccess(),
-            'collegeFilePath'   => $this->college_file_path,
             'warrantyType'      => $this->whenPivotLoaded('warranties', function () {
                 return WarrantyTypeResource::make($this->pivot->warrantyType);
             }),

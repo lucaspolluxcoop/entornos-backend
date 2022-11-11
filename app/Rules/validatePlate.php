@@ -38,7 +38,6 @@ class validatePlate implements Rule, DataAwareRule
         $user = User::join('profiles','profiles.user_id','=','users.id')
             ->join('plates','plates.profile_id','=','profiles.id')
             ->selectRaw('users.*')
-            ->where('users.college_id', $this->data['college_id'])
             ->where('plates.number', $value)
             ->first();
 

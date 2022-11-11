@@ -13,7 +13,6 @@ use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\WarrantyController;
 use App\Http\Controllers\PlateStateController;
-use App\Http\Controllers\UserCollegeController;
 use App\Http\Controllers\ContractPartController;
 use App\Http\Controllers\ContractTypeController;
 use App\Http\Controllers\NotificationController;
@@ -56,7 +55,7 @@ Route::middleware('auth:api')->group(function() {
         return response()->json(
                 new UserResource(
                     $request->user()->load(
-                        ['userState','role', 'profile.plate.plateState', 'profile.city.state','profile.economicActivityType','college']
+                        ['userState','role', 'profile.plate.plateState', 'profile.city.state','profile.economicActivityType']
                     )
                 )
             );
@@ -69,7 +68,6 @@ Route::middleware('auth:api')->group(function() {
     Route::post('users-approve/{user}',[UserController::class,'approve'])->name('users.approve');
     Route::patch('users-password/{user}',[UserController::class,'updatePassword'])->name('users.update-password');
     Route::get('users-find-user',[UserController::class, 'findUser'])->name('users.findUser');
-    Route::get('users-grouped-user',[UserController::class, 'findGroupedUser'])->name('users.findGroupedUser');
 
     Route::get('properties',[PropertyController::class,'index'])->name('properties.index');
     Route::post('properties',[PropertyController::class,'store'])->name('properties.store');
@@ -137,6 +135,5 @@ Route::get('roles',[RoleController::class,'index'])->name('role.index');
 Route::get('states',[StateController::class,'index'])->name('states.index');
 Route::get('plate-states/',[PlateStateController::class,'index'])->name('plate-states.index');
 Route::get('economic-activity-types',[EconomicActivityTypeController::class,'index'])->name('economic-activity-types.index');
-Route::get('users-colleges',[UserCollegeController::class,'index'])->name('users-colleges.index');
 Route::get('users-find-plate',[UserController::class, 'findByPlate'])->name('users.findByPlate');
 Route::get('users-find-user',[UserController::class, 'findUser'])->name('users.findUser');

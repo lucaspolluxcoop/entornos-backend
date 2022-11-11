@@ -12,9 +12,6 @@ class RoleFilter implements Filter
 {
     public function __invoke(Builder $query, $value, string $property)
     {
-        if ($value == Role::COLEGIO) {
-            $query->where('users.college_id', Auth::id());
-        }
         if ($value == Role::CORREDOR) {
             $ownUsers = Auth::user()->getOwnUsers();
 

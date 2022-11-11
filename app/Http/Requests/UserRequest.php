@@ -28,7 +28,6 @@ class UserRequest extends FormRequest
         $roleName = Role::find($this->get('role_id'))->name;
         $userFieldValidation = $this->user ? 'exists' : 'unique';
         $required = $this->user ? 'nullable' : 'required';
-        $college = Role::COLEGIO;
         $realStateBroker = Role::CORREDOR;
         $tenant = Role::LOCATARIO;
         $warrant = Role::GARANTE;
@@ -37,7 +36,6 @@ class UserRequest extends FormRequest
         $baseRules = [
             'email'                                     => "required|{$userFieldValidation}:users,email|email",
             'role_id'                                   => 'required|numeric|exists:roles,id',
-            'college_id'                                => 'nullable|numeric',
             'password'                                  => 'nullable|string|min:8',
             'registration_file'                         => 'nullable|file|mimes:pdf',
             'profile.first_name'                        => 'required|string',
@@ -67,16 +65,9 @@ class UserRequest extends FormRequest
             'profile.nationality'                       => 'nullable|string'
         ];
         $specificRules = [
-            $college => [
-                'profile.first_name'    => 'nullable|string',
-                'profile.last_name'     => 'nullable|string',
-                'profile.district'      => 'required|string',
-                'profile.denomination'  => 'required|string',
-            ],
             $realStateBroker => [
-                'college_id'                    => 'required|exists:users,id',
                 'profile.denomination'          => 'required|string',
-                'profile.plate.number'          => ['required',is_null($this->user) ? new validatePlate : ''],
+                'profile.plate.number'          => 'required|unique:plates,number',
                 'profile.plate.plate_state_id'  => 'required|numeric|exists:plate_states,id',
                 'profile.plate.expiration_date' => 'required|date'
             ],

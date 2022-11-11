@@ -20,21 +20,9 @@ class ProfileObserver
         try {
             $token = Password::createToken($profile->user);
             $profile->user->sendPasswordResetNotification($token);
-            $profile->user->setIdentifier();
         }
         catch(Exception $error) {
             return $error;
         }
-    }
-
-    /**
-     * Handle the Profile "updated" event.
-     *
-     * @param  \App\Models\Profile  $profile
-     * @return void
-     */
-    public function updated(Profile $profile)
-    {
-        $profile->user->setIdentifier();
     }
 }
