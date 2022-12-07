@@ -51,9 +51,9 @@ class MailResetPasswordNotification extends Notification
 
         return ( new MailMessage )
             ->greeting("Hola! $fullName")
-            ->subject( 'Nuevo Usuario Creado' )
-            ->line( "Felicidades, su usuario ha sido creado con éxito y ya puede comenzar a usar la aplicación. Por favor ingrese en el siguiente link para completar su cuenta." )
-            ->action( 'Completar Registro', $link )
+            ->subject( 'Recuperación de contraseña' )
+            ->line( "Su solicitud de cambio de contraseña ha sido generada con éxito. Por favor ingrese en el siguiente link para cambiar la contraseña de su cuenta." )
+            ->action( 'Cambia contraseña',$link )
             ->salutation('Saludos!');
     }
 
