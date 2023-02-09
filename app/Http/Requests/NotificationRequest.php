@@ -25,13 +25,13 @@ class NotificationRequest extends FormRequest
     public function rules()
     {
         return [
-            'date'  => 'required|date',
-            'other_reason'  => 'nullable|string',
-            'contract_id' => 'required|exists:contracts,id',
-            'notification_management_id' => 'required|exists:notification_managements,id',
-            'notification_reason_id' => 'required|exists:notification_reasons,id',
-            'user_id' => 'required|exists:users,id',
-            'notification_response_id' => 'nullable|exists:notification_responses,id'
+            'date'                          => 'required|date',
+            'other_reason'                  => 'nullable|string',
+            'contract_id'                   => 'required|exists:contracts,id',
+            'notification_management_id'    => 'required|exists:notification_managements,id',
+            'notification_reason_id'        => 'required|exists:notification_reasons,id',
+            'user_id'                       => 'required|exists:users,id',
+            'notification_response_id'      => 'nullable|exists:notification_responses,id'
         ];
     }
 
@@ -42,5 +42,20 @@ class NotificationRequest extends FormRequest
                 'other_reason' => null
             ]);
         }
+    }
+
+    public function attributes()
+    {
+        $attributes = [
+            'date'                          => 'Fecha',
+            'other_reason'                  => 'Otro Motivo',
+            'contract_id'                   => 'Contrato',
+            'notification_management_id'    => 'Tipo',
+            'notification_reason_id'        => 'Motivo de Notificación',
+            'user_id'                       => 'Usuario',
+            'notification_response_id'      => 'Respuesta de Notificación',
+        ];
+
+        return $attributes;
     }
 }

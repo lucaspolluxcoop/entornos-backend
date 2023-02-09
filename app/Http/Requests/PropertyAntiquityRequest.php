@@ -42,4 +42,18 @@ class PropertyAntiquityRequest extends FormRequest
             'delivered_painted'             => 'required|boolean'
         ];
     }
+
+    public function attributes()
+    {
+        $attributes = [
+            'property_id'                   => 'Propiedad',
+            'antiquity'                     => 'Antiguedad',
+            'property_conservation_id'      => 'Estado de Conservación',
+            'property_termination_id'       => 'Terminaciones',
+            'property_maintenance_state_id' => 'Estado de Mantenimiento',
+            'delivered_painted'             => 'Se entrega pintado',
+        ];
+
+        return $attributes;
+    }
 }

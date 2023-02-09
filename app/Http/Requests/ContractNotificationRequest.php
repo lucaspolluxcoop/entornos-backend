@@ -27,10 +27,25 @@ class ContractNotificationRequest extends FormRequest
             'contract_notification_category_id' => 'required|numeric|exists:contract_notification_categories,id',
             'contract_id'                       => 'required|numeric|exists:contracts,id',
             'notification_date'                 => 'required|date',
-            'response_date'                      => 'exclude_if:contract_notification_response_id,null|required|date',
+            'response_date'                     => 'exclude_if:contract_notification_response_id,null|required|date',
             'contract_notification_response_id' => 'nullable||numeric|exists:contract_notification_responses,id',
             'user_id'                           => 'required|numeric|exists:users,id',
             'reason_id'                         => 'required||numeric|exists:contract_notification_categories,id'
         ];
+    }
+
+    public function attributes()
+    {
+        $attributes = [
+            'contract_notification_category_id'     => 'Categoría de Notificación',
+            'contract_id'                           => 'Contrato',
+            'notification_date'                     => 'Fecha de Notificación',
+            'response_date'                         => 'Fecha de Respuesta',
+            'contract_notification_response_id'     => 'Respuesta de Notificación',
+            'user_id'                               => 'Usuario',
+            'reason_id'                             => 'Razón',
+        ];
+
+        return $attributes;
     }
 }

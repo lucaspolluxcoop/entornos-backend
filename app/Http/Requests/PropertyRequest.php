@@ -40,4 +40,23 @@ class PropertyRequest extends FormRequest
             'property_zone_id'      => 'nullable|exists:property_zones,id'
         ];
     }
+    public function attributes()
+    {
+        $attributes = [
+            'street'                => 'Calle',
+            'number'                => 'Número',
+            'floor'                 => 'Piso',
+            'apartment'             => 'Departamento',
+            'area'                  => 'Área',
+            'neightbourhood'        => 'Barrio',
+            'zip'                   => 'Código Postal',
+            'property_identifier'   => 'Partida Inmobiliaria',
+            'owner_tax_id'          => 'CUIT Propietario',
+            'city_id'               => 'Ciudad',
+            'property_type_id'      => 'Tipo de Propiedad',
+            'property_zone_id'      => 'Zona',
+        ];
+
+        return $attributes;
+    }
 }

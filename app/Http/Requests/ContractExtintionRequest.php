@@ -29,4 +29,15 @@ class ContractExtintionRequest extends FormRequest
             'other_reason'          => 'nullable|required_if:extintion_reason_id,9|string',
         ];
     }
+
+    public function attributes()
+    {
+        $attributes = [
+            'extintion_date'        => 'Fecha de extinción',
+            'extintion_reason_id'   => 'Motivo',
+            'other_reason'          => 'Otro Motivo',
+        ];
+
+        return $attributes;
+    }
 }

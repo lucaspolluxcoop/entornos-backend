@@ -35,4 +35,21 @@ class ContractRequest extends FormRequest
             'locator_id'                    => 'required|exists:users,id',
         ];
     }
+
+    public function attributes()
+    {
+        $attributes = [
+            'start_contract'                => 'Inicio de Contrato',
+            'end_contract'                  => 'Fin de Contrato',
+            'contract_locative_canon_id'    => 'Canon Locativo',
+            'warranties'                    => 'Garantías',
+            'property_id'                   => 'Propiedad',
+            'contract_type_id'              => 'Tipo de Contrato',
+            'owner_id'                      => 'Creador del Contrato',
+            'tenant_id'                     => 'Locatario',
+            'locator_id'                    => 'Locador',
+        ];
+
+        return $attributes;
+    }
 }

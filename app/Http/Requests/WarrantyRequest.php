@@ -28,4 +28,14 @@ class WarrantyRequest extends FormRequest
             'user_id'           => 'required|exists:users,id'
         ];
     }
+
+    public function attributes()
+    {
+        $attributes = [
+            'warranty_type_id'  => 'Tipo de Garantía',
+            'user_id'           => 'Usuario',
+        ];
+
+        return $attributes;
+    }
 }

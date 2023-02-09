@@ -108,4 +108,41 @@ class UserRequest extends FormRequest
             ]);
         }
     }
+
+    public function attributes()
+    {
+        $attributes = [
+            'email'                                     => 'Email',
+            'role_id'                                   => 'Rol',
+            'password'                                  => 'Contraseña',
+            'registration_file'                         => 'Archivo de Registro',
+            'profile.first_name'                        => 'Nombre',
+            'profile.last_name'                         => 'Apellido',
+            'profile.denomination'                      => 'Denominación',
+            'profile.district'                          => 'Circunscripción',
+            'profile.cuit'                              => 'CUIT',
+            'profile.phone'                             => 'Teléfono',
+            'profile.cell_phone'                        => 'Celular',
+            'profile.economic_activity_type_id'         => 'Actividad Económica',
+            'profile.other_economic_activity_type_name' => 'Otra Actividad Económica',
+            'profile.website'                           => 'Sitio Web',
+            'profile.city_id'                           => 'Ciudad',
+            'profile.zip'                               => 'Código Postal',
+            'profile.street'                            => 'Calle',
+            'profile.number'                            => 'Número',
+            'profile.floor'                             => 'Piso',
+            'profile.apartment'                         => 'Departamento',
+            'profile.neighbourhood'                     => 'Barrio',
+            'profile.family_group_adults'               => 'Cantidad de Adultos',
+            'profile.family_group_under_age'            => 'Menores de Edad',
+            'profile.plate.number'                      => 'Matrícula',
+            'profile.plate.plate_state_id'              => 'Estado Matrícula',
+            'profile.plate.expiration_date'             => 'Fecha de expiración',
+            'profile.dni'                               => 'DNI',
+            'profile.business_name'                     => 'Nombre Comercial',
+            'profile.nationality'                       => 'Nacionalidad',
+        ];
+
+        return $attributes;
+    }
 }
